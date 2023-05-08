@@ -1,6 +1,6 @@
 package main
 
-func Sum(n [5]int) int {
+func Sum(n []int) int {
 	sum := 0
 
 	for _, number := range n {
