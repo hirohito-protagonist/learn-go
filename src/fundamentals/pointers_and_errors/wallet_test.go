@@ -12,6 +12,13 @@ func TestWallet(t *testing.T) {
 		}
 	}
 
+	assertError := func(t testing.TB, err error) {
+		t.Helper()
+		if err == nil {
+			t.Error("wanted an error but did not get one")
+		}
+	}
+
 	t.Run("deposit", func(t *testing.T) {
 		wallet := Wallet{}
 
@@ -28,5 +35,14 @@ func TestWallet(t *testing.T) {
 		want := Bitcoin(10)
 
 		assertBalance(t, wallet, want)
+	})
+
+	t.Run("withdraw insufficient funds", func(t *testing.T) {
+		startingBalance := Bitcoin(20)
+		wallet := Wallet{startingBalance}
+		err := wallet.Withdraw(Bitcoin(100))
+
+		assertError(t, err)
+		assertBalance(t, wallet, startingBalance)
 	})
 }
