@@ -1,5 +1,7 @@
 package dictionary
 
-func Search(dic map[string]string, key string) string {
-	return dic[key]
+type Dictionary map[string]string
+
+func (d Dictionary) Search(key string) string {
+	return d[key]
 }
