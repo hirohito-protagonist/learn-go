@@ -20,6 +20,16 @@ func TestDictionary(t *testing.T) {
 		}
 		assertError(t, err, ErrNotFound)
 	})
+
+	t.Run("add", func(t *testing.T) {
+		dictionary := Dictionary{}
+		dictionary.Add("test", "this is just a another test")
+
+		got, _ := dictionary.Search("test")
+		want := "this is just a another test"
+
+		assertStrings(t, got, want)
+	})
 }
 
 func assertStrings(t testing.TB, got, want string) {
