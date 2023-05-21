@@ -13,10 +13,10 @@ const countdownStart = 3
 
 func Countdown(out io.Writer) {
 	for i := countdownStart; i > 0; i-- {
-		fmt.Fprintf(out, strconv.FormatInt(int64(i), 10))
+		fmt.Fprintln(out, strconv.FormatInt(int64(i), 10))
 		time.Sleep(1 * time.Second)
 	}
-	fmt.Fprintf(out, finalWord)
+	fmt.Fprint(out, finalWord)
 }
 
 func main() {
