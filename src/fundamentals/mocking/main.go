@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-const finalWord = "Go!"
+const finalWord = "GO!"
 const countdownStart = 3
 
 func Countdown(out io.Writer) {
